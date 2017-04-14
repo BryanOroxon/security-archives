@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{029FF4A5-69CC-4AB6-AC94-AB15848E0C42}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Archives/AccessViewController.cs">
+    <Files>
+      <File FileName="Archives/ArchivesViewController.cs" Line="123" Column="4" />
+      <File FileName="Archives/AccessViewController.cs" Line="30" Column="50" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Archives PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.4af621c318da47dd968e87a249da4c5cc66efa63">
+    <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="E8W824QB4B" TeamId="89CL3Y9494" />
+  </MonoDevelop.Ide.ItemProperties.Archives>
+  <MultiItemStartupConfigurations />
+</Properties>

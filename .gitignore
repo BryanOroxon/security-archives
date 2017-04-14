@@ -1,0 +1,8 @@
+
+Archives/bin/
+Archives/obj/
+
+Archives.UITests/bin/
+Archives.UITests/obj/
+
+packages/
