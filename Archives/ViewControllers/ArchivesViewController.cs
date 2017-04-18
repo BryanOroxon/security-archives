@@ -6,7 +6,7 @@ using Foundation;
 using Photos;
 using UIKit;
 
-namespace Archives
+namespace Archives.ViewControllers
 {
 	public partial class ArchivesViewController : UITableViewController
 	{
@@ -67,7 +67,6 @@ namespace Archives
 								case PHAuthorizationStatus.Denied:
 									alert = UIAlertController.Create("Oops!", "Access Denied", UIAlertControllerStyle.Alert);
 									alert.AddAction(UIAlertAction.Create("Accept", UIAlertActionStyle.Cancel, null));
-
 									PresentViewController(alert, true, null);
 									break;
 								case PHAuthorizationStatus.Restricted:

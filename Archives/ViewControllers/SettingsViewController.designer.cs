@@ -7,14 +7,20 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives
+namespace Archives.ViewControllers
 {
-	[Register ("ArchivesViewController")]
-	partial class ArchivesViewController
+	[Register ("SettingsViewController")]
+	partial class SettingsViewController
 	{
+		[Outlet]
+		UIKit.UITableView SettingsTableView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (SettingsTableView != null) {
+				SettingsTableView.Dispose ();
+				SettingsTableView = null;
+			}
 		}
 	}
 }

@@ -130,6 +130,12 @@
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -137,6 +143,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Sources\" />
+    <Folder Include="ViewControllers\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -150,22 +161,26 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AccessViewController.cs" />
-    <Compile Include="AccessViewController.designer.cs">
-      <DependentUpon>AccessViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
-    <Compile Include="ArchivesViewController.cs" />
-    <Compile Include="ArchivesViewController.designer.cs">
+    <Compile Include="Entities\Setting.cs" />
+    <Compile Include="Sources\SettingsTableSource.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.designer.cs">
+      <DependentUpon>SettingsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SecurityViewController.cs" />
+    <Compile Include="ViewControllers\SecurityViewController.designer.cs">
+      <DependentUpon>SecurityViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ArchivesViewController.cs" />
+    <Compile Include="ViewControllers\ArchivesViewController.designer.cs">
       <DependentUpon>ArchivesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PreviewViewController.cs" />
-    <Compile Include="PreviewViewController.designer.cs">
-      <DependentUpon>PreviewViewController.cs</DependentUpon>
+    <Compile Include="Helpers\AkavacheHelper.cs" />
+    <Compile Include="Extensions\SecStatusCodeExtensions.cs" />
+    <Compile Include="ViewControllers\ValidatePasscodeViewController.cs" />
+    <Compile Include="ViewControllers\ValidatePasscodeViewController.designer.cs">
+      <DependentUpon>ValidatePasscodeViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,16 +1,20 @@
 ﻿<Properties StartupConfiguration="{029FF4A5-69CC-4AB6-AC94-AB15848E0C42}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Archives/AccessViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Archives/ViewControllers/SecurityViewController.cs">
     <Files>
-      <File FileName="Archives/ArchivesViewController.cs" Line="123" Column="4" />
-      <File FileName="Archives/AccessViewController.cs" Line="30" Column="50" />
+      <File FileName="Archives/ViewControllers/SecurityViewController.cs" Line="69" Column="27" />
+      <File FileName="Archives/ViewControllers/ValidatePasscodeViewController.cs" Line="63" Column="7" />
+      <File FileName="Archives/ViewControllers/SettingsViewController.cs" Line="60" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/rcervantes/Github/security-archives/Archives/ViewControllers/ValidatePasscodeViewController.cs" relfile="Archives/ViewControllers/ValidatePasscodeViewController.cs" line="56" column="1" />
+      <Breakpoint file="/Users/rcervantes/Github/security-archives/Archives/ViewControllers/ValidatePasscodeViewController.cs" relfile="Archives/ViewControllers/ValidatePasscodeViewController.cs" line="58" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Archives PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.4af621c318da47dd968e87a249da4c5cc66efa63">
+  <MonoDevelop.Ide.ItemProperties.Archives PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.435E386D-3A2F-430C-B6D5-A206577F651E">
     <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="E8W824QB4B" TeamId="89CL3Y9494" />
   </MonoDevelop.Ide.ItemProperties.Archives>
   <MultiItemStartupConfigurations />

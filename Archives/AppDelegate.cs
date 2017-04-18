@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Text;
+using Akavache;
 using Foundation;
 using LocalAuthentication;
 using Security;
@@ -27,12 +28,7 @@ namespace Archives
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
 
-			SecStatusCode code = ValidateKeychain();
-
-			if (code == SecStatusCode.ItemNotFound)
-			{
-				CreateKeychain();
-			}
+			BlobCache.ApplicationName = "Archives";
 
 			// Code to start the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD
@@ -75,40 +71,6 @@ namespace Archives
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
 		}
 
-		#region static methods
-
-		public static SecStatusCode ValidateKeychain()
-		{
-			//validation.
-			var rec = new SecRecord(SecKind.GenericPassword)
-			{
-				Service = "com.rcervantes.Archives",
-				UseOperationPrompt = "Archives Authentication"
-			};
-
-			SecStatusCode res;
-			SecKeyChain.QueryAsRecord(rec, out res);
-
-			return res;
-		}
-
-		public static void CreateKeychain()
-		{
-			var valueData = NSData.FromString(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), NSStringEncoding.Unicode);
-
-			var secRecord = new SecRecord(SecKind.GenericPassword)
-			{
-				Account = "Account",
-				Service = "com.rcervantes.Archives",
-				ValueData = valueData,
-				UseNoAuthenticationUI = true,
-				AccessControl = new SecAccessControl(SecAccessible.WhenPasscodeSetThisDeviceOnly, SecAccessControlCreateFlags.UserPresence)
-			};
-
-			SecKeyChain.Add(secRecord);
-		}
-
-		#endregion
 	}
 }
 
