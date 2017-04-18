@@ -395,10 +395,10 @@
             </objects>
             <point key="canvasLocation" x="-183.19999999999999" y="868.51574212893559"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="pTs-Bw-FGl">
             <objects>
-                <tabBarController id="Srw-kf-geN" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Srw-kf-geN" customClass="MainViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="soU-Nb-Ydx">
                         <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

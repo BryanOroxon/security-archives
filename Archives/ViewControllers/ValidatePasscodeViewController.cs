@@ -82,7 +82,9 @@ namespace Archives.ViewControllers
 					{
 						if (success)
 						{
-							NavigationController.PopViewController(true);
+							UIViewController uiviewcontroller = Storyboard.InstantiateViewController(TargetViewController);
+							Navigation.PushViewController(uiviewcontroller, true);
+							DismissViewController(false, null);
 						}
 					});
 
