@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fvb-0d-tsb" id="Lrw-vd-DEQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -116,112 +116,144 @@
                                 <color key="backgroundColor" red="0.17257410287857056" green="0.21834245324134827" blue="0.44677489995956421" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9F-p2-xlW">
-                                <rect key="frame" x="26" y="80" width="161.5" height="31"/>
+                                <rect key="frame" x="26" y="124" width="161.5" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UUb-zN-HFa">
-                                <rect key="frame" x="197.5" y="80" width="51" height="31"/>
+                                <rect key="frame" x="197.5" y="124" width="51" height="31"/>
                                 <connections>
                                     <action selector="IsPasscodeEnabledValueChanged:" destination="Iu8-zW-fHn" eventType="valueChanged" id="z7h-26-OdP"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7I-6N-pNY">
-                                <rect key="frame" x="26" y="131" width="161.5" height="31"/>
+                                <rect key="frame" x="26" y="175" width="161.5" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vzY-Fk-anI">
-                                <rect key="frame" x="197.5" y="131" width="51" height="31"/>
+                                <rect key="frame" x="197.5" y="175" width="51" height="31"/>
                                 <connections>
                                     <action selector="IsTouchIDEnabledValueChanged:" destination="Iu8-zW-fHn" eventType="valueChanged" id="6ua-DW-U5D"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHq-AY-FhU">
-                                <rect key="frame" x="26" y="212" width="323" height="21"/>
+                                <rect key="frame" x="26" y="256" width="323" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ZF-Sd-NNd">
-                                <rect key="frame" x="111.5" y="253" width="35" height="30"/>
+                                <rect key="frame" x="111.5" y="297" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="3a6-dS-9VC"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="9vT-9X-h5Y"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="y2v-pZ-HVw"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mf5-Lp-JA1">
-                                <rect key="frame" x="150.5" y="253" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mf5-Lp-JA1">
+                                <rect key="frame" x="150.5" y="297" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="OEz-WU-SOy"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="dQ3-g9-JdU"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="YlP-V0-fnd"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-Rc-Ktd">
-                                <rect key="frame" x="189.5" y="253" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-Rc-Ktd">
+                                <rect key="frame" x="189.5" y="297" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="kmt-5s-4bf"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="XRB-Xg-wef"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="oZa-FW-Lc4"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J67-Qr-XKr">
-                                <rect key="frame" x="228.5" y="253" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J67-Qr-XKr">
+                                <rect key="frame" x="228.5" y="297" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="If2-DL-9np"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="mcF-Uq-Hd3"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="zpD-2a-m1X"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat Passcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHl-TS-7Do">
-                                <rect key="frame" x="26" y="303" width="323" height="21"/>
+                                <rect key="frame" x="26" y="347" width="323" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIS-NC-Mmd">
-                                <rect key="frame" x="111.5" y="344" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIS-NC-Mmd">
+                                <rect key="frame" x="111.5" y="388" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="pgc-Bc-BI4"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="mr8-GT-q6F"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="Ba8-0w-tgQ"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ik-lg-aLm">
-                                <rect key="frame" x="150.5" y="344" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ik-lg-aLm">
+                                <rect key="frame" x="150.5" y="388" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="0Y9-uT-WH2"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="AU7-V2-eKx"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="e7v-zl-11O"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1e-Ko-tfi">
-                                <rect key="frame" x="189.5" y="344" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1e-Ko-tfi">
+                                <rect key="frame" x="189.5" y="388" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="U3b-1d-4Fb"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="KE3-Rv-u1c"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="GTp-8o-wBJ"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ca-Qh-BEG">
-                                <rect key="frame" x="228.5" y="344" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ca-Qh-BEG">
+                                <rect key="frame" x="228.5" y="388" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="yne-sH-TpA"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="Iu8-zW-fHn" eventType="editingChanged" id="8na-tb-cOV"/>
+                                    <outlet property="delegate" destination="Iu8-zW-fHn" id="D6n-hE-d6k"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,6 +299,13 @@
                             <constraint firstItem="5ZF-Sd-NNd" firstAttribute="top" secondItem="RHq-AY-FhU" secondAttribute="bottom" constant="20" id="xdf-aY-wec"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3U5-Yo-kTX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xLG-Vf-try">
+                            <connections>
+                                <action selector="savedButtonClicked:" destination="Iu8-zW-fHn" id="cRG-HE-inO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="FirstDigit" destination="5ZF-Sd-NNd" id="NJn-ve-I6a"/>
                         <outlet property="FirstDigitRepeat" destination="pIS-NC-Mmd" id="bqv-Nh-MoY"/>
@@ -278,11 +317,19 @@
                         <outlet property="SecondDigitRepeat" destination="6Ik-lg-aLm" id="xpv-iG-3LS"/>
                         <outlet property="ThirdDigit" destination="ehX-Rc-Ktd" id="Eds-Am-h3N"/>
                         <outlet property="ThirdDigitRepeat" destination="I1e-Ko-tfi" id="CtM-dp-eZW"/>
+                        <outletCollection property="digitTextFields" destination="5ZF-Sd-NNd" id="Ybf-ly-P8L"/>
+                        <outletCollection property="digitTextFields" destination="mf5-Lp-JA1" id="kb0-rn-NI2"/>
+                        <outletCollection property="digitTextFields" destination="ehX-Rc-Ktd" id="4Gn-kS-cCw"/>
+                        <outletCollection property="digitTextFields" destination="J67-Qr-XKr" id="jJe-LT-ANM"/>
+                        <outletCollection property="digitTextFields" destination="pIS-NC-Mmd" id="FyV-KP-KTr"/>
+                        <outletCollection property="digitTextFields" destination="6Ik-lg-aLm" id="QFd-3X-xde"/>
+                        <outletCollection property="digitTextFields" destination="I1e-Ko-tfi" id="AuC-f3-I04"/>
+                        <outletCollection property="digitTextFields" destination="8ca-Qh-BEG" id="5ph-Ou-qfD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRt-SF-e2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-871.20000000000005" y="868.51574212893559"/>
+            <point key="canvasLocation" x="68" y="868.51574212893559"/>
         </scene>
         <!--Validate Passcode View Controller-->
         <scene sceneID="z1O-r5-HKA">
@@ -393,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU1-ZH-ja2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183.19999999999999" y="868.51574212893559"/>
+            <point key="canvasLocation" x="756" y="868.51574212893559"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="pTs-Bw-FGl">
@@ -412,6 +459,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVJ-b8-ReY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2647" y="-159"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Te-tF-iJ4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hcu-H8-xSD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5be-Jh-jpC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Iu8-zW-fHn" kind="relationship" relationship="rootViewController" id="aH2-3u-brm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Grr-du-PQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-871.20000000000005" y="868.51574212893559"/>
         </scene>
     </scenes>
 </document>

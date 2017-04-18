@@ -13,16 +13,7 @@ namespace Archives.ViewControllers
 	partial class SecurityViewController
 	{
 		[Outlet]
-		UIKit.UITextField FirstDigit { get; set; }
-
-		[Outlet]
-		UIKit.UITextField FirstDigitRepeat { get; set; }
-
-		[Outlet]
-		UIKit.UITextField FourthDigit { get; set; }
-
-		[Outlet]
-		UIKit.UITextField FourthDigitRepeat { get; set; }
+		UIKit.UITextField[] digitTextFields { get; set; }
 
 		[Outlet]
 		UIKit.UISwitch IsPasscodeEnabled { get; set; }
@@ -30,23 +21,17 @@ namespace Archives.ViewControllers
 		[Outlet]
 		UIKit.UISwitch IsTouchIDEnabled { get; set; }
 
-		[Outlet]
-		UIKit.UITextField SecondDigit { get; set; }
-
-		[Outlet]
-		UIKit.UITextField SecondDigitRepeat { get; set; }
-
-		[Outlet]
-		UIKit.UITextField ThirdDigit { get; set; }
-
-		[Outlet]
-		UIKit.UITextField ThirdDigitRepeat { get; set; }
-
 		[Action ("IsPasscodeEnabledValueChanged:")]
 		partial void IsPasscodeEnabledValueChanged (Foundation.NSObject sender);
 
 		[Action ("IsTouchIDEnabledValueChanged:")]
 		partial void IsTouchIDEnabledValueChanged (Foundation.NSObject sender);
+
+		[Action ("savedButtonClicked:")]
+		partial void savedButtonClicked (Foundation.NSObject sender);
+
+		[Action ("textFieldEditingChanged:")]
+		partial void textFieldEditingChanged (UIKit.UITextField sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -58,46 +43,6 @@ namespace Archives.ViewControllers
 			if (IsTouchIDEnabled != null) {
 				IsTouchIDEnabled.Dispose ();
 				IsTouchIDEnabled = null;
-			}
-
-			if (FirstDigit != null) {
-				FirstDigit.Dispose ();
-				FirstDigit = null;
-			}
-
-			if (FirstDigitRepeat != null) {
-				FirstDigitRepeat.Dispose ();
-				FirstDigitRepeat = null;
-			}
-
-			if (FourthDigit != null) {
-				FourthDigit.Dispose ();
-				FourthDigit = null;
-			}
-
-			if (FourthDigitRepeat != null) {
-				FourthDigitRepeat.Dispose ();
-				FourthDigitRepeat = null;
-			}
-
-			if (SecondDigit != null) {
-				SecondDigit.Dispose ();
-				SecondDigit = null;
-			}
-
-			if (SecondDigitRepeat != null) {
-				SecondDigitRepeat.Dispose ();
-				SecondDigitRepeat = null;
-			}
-
-			if (ThirdDigit != null) {
-				ThirdDigit.Dispose ();
-				ThirdDigit = null;
-			}
-
-			if (ThirdDigitRepeat != null) {
-				ThirdDigitRepeat.Dispose ();
-				ThirdDigitRepeat = null;
 			}
 		}
 	}
