@@ -7,7 +7,6 @@ using System.Linq;
 using Akavache;
 using System.Reactive;
 using System.Threading.Tasks;
-using Archives.Helpers;
 using LocalAuthentication;
 
 namespace Archives.ViewControllers
@@ -26,7 +25,7 @@ namespace Archives.ViewControllers
 
 			Task.Run(async () =>
 			{
-				var isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
+				var isTouchIDEnabled = await BlobCache.UserAccount.TryGetObject<bool>("IsTouchIDEnabled");
 
 				if (isTouchIDEnabled)
 					LaunchTouchID();
@@ -76,7 +75,7 @@ namespace Archives.ViewControllers
 			{
 				Task.Run(async () =>
 				{
-					string opasscode = await AkavacheHelper.TryGetSecureObject<string>("Passcode");
+					string opasscode = await BlobCache.Secure.TryGetSecureObject<string>("Passcode");
 					string rpasscode = string.Empty;
 
 					BeginInvokeOnMainThread(() =>

@@ -142,10 +142,8 @@
     <ImageAsset Include="Assets.xcassets\Contents.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="Sources\" />
     <Folder Include="ViewControllers\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Extensions\" />
     <Folder Include="Controls\" />
     <Folder Include="Models\" />
@@ -172,7 +170,6 @@
     <Compile Include="ViewControllers\ArchivesViewController.designer.cs">
       <DependentUpon>ArchivesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\AkavacheHelper.cs" />
     <Compile Include="Extensions\SecStatusCodeExtensions.cs" />
     <Compile Include="ViewControllers\ValidatePasscodeViewController.cs" />
     <Compile Include="ViewControllers\ValidatePasscodeViewController.designer.cs">
@@ -194,6 +191,7 @@
       <DependentUpon>SetPasscodeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Setting.cs" />
+    <Compile Include="Extensions\AkavacheExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

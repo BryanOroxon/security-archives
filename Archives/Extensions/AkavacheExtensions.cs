@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Akavache;
 using System.Reactive.Linq;
 
-namespace Archives.Helpers
+namespace Archives
 {
-	public class AkavacheHelper
+	public static class AkavacheExtensions
 	{
-		public static async Task<T> TryGetObject<T>(string element)
+		public static async Task<T> TryGetObject<T>(this IBlobCache blob, string element)
 		{
 			T result = default(T);
 			try
@@ -23,7 +23,7 @@ namespace Archives.Helpers
 			return result;
 		}
 
-		public static async Task<T> TryGetSecureObject<T>(string element)
+		public static async Task<T> TryGetSecureObject<T>(this ISecureBlobCache blob, string element)
 		{
 			T result = default(T);
 			try

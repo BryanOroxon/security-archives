@@ -8,8 +8,8 @@ using System.Collections.Generic;
 using Archives.Models;
 using Archives.Sources;
 using System.Threading.Tasks;
-using Archives.Helpers;
 using CoreFoundation;
+using Akavache;
 
 namespace Archives.ViewControllers
 {
@@ -36,25 +36,22 @@ namespace Archives.ViewControllers
 		{
 			try
 			{
-				await AkavacheHelper.TryGetObject<bool>("IsPasscodeEnabled").ContinueWith((a) =>
-				{
-					_isPasscodeEnabled = a.Result;
+				_isPasscodeEnabled = await BlobCache.UserAccount.TryGetObject<bool>("IsPasscodeEnabled");
 
-					DispatchQueue.MainQueue.DispatchAsync(() =>
+				BeginInvokeOnMainThread(() =>
+				{
+					if ((e.Name == "Security") && (_isPasscodeEnabled))
 					{
-						if ((e.Name == "Security") && (_isPasscodeEnabled))
-						{
-							ValidatePasscodeViewController validate = (ValidatePasscodeViewController)Storyboard.InstantiateViewController("ValidatePasscodeViewController");
-							validate.TargetViewController = "SecurityViewController";
-							validate.Navigation = NavigationController;
-							PresentViewController(validate, true, null);
-						}
-						else
-						{
-							UIViewController uiviewcontroller = Storyboard.InstantiateViewController(e.TargetViewController);
-							NavigationController.PushViewController(uiviewcontroller, true);
-						}
-					});
+						ValidatePasscodeViewController validate = (ValidatePasscodeViewController)Storyboard.InstantiateViewController("ValidatePasscodeViewController");
+						validate.TargetViewController = "SecurityViewController";
+						validate.Navigation = NavigationController;
+						PresentViewController(validate, true, null);
+					}
+					else
+					{
+						UIViewController uiviewcontroller = Storyboard.InstantiateViewController(e.TargetViewController);
+						NavigationController.PushViewController(uiviewcontroller, true);
+					}
 				});
 			}
 			catch

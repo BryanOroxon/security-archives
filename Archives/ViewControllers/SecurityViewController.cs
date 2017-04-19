@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Reactive;
 using System.Threading.Tasks;
 using Akavache;
-using Archives.Helpers;
 using Archives.Models;
 using Archives.Sources;
 using Foundation;
@@ -27,8 +26,8 @@ namespace Archives.ViewControllers
 			base.LoadView();
 			Task.Run(async () =>
 			{
-				_isPasscodeEnabled = await AkavacheHelper.TryGetObject<bool>("IsPasscodeEnabled");
-				_isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
+				_isPasscodeEnabled = await BlobCache.UserAccount.TryGetObject<bool>("IsPasscodeEnabled");
+				_isTouchIDEnabled = await BlobCache.UserAccount.TryGetObject<bool>("IsTouchIDEnabled");
 			});
 		}
 
@@ -52,17 +51,18 @@ namespace Archives.ViewControllers
 
 		public override void ViewWillAppear(Boolean animated)
 		{
+			//catch when the passcode set view has been popped
 			if (IsCommingFromSetPasscode)
 			{
 				Task.Run(async () =>
 				{
-					var passcode = await AkavacheHelper.TryGetSecureObject<string>("Passcode");
+					var passcode = await BlobCache.Secure.TryGetSecureObject<string>("Passcode");
 
 					bool hasPasscode = (passcode != null) ? true : false;
 					IObservable<Unit> result_passcode = BlobCache.UserAccount.InsertObject("IsPasscodeEnabled", hasPasscode);
 					_isPasscodeEnabled = hasPasscode;
 
-					_isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
+					_isTouchIDEnabled = await BlobCache.UserAccount.TryGetObject<bool>("IsTouchIDEnabled");
 
 					BeginInvokeOnMainThread(() =>
 					{
