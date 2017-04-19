@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -302,21 +301,8 @@
                                     <outlet property="delegate" destination="M7C-yc-h9v" id="7OX-sI-0Ka"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8i-jD-Aif">
-                                <rect key="frame" x="192.5" y="216" width="72" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="I8i-jD-Aif" secondAttribute="height" multiplier="12:5" id="QR4-Ux-e74"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Validate">
-                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="validateTouchUpInside:" destination="M7C-yc-h9v" eventType="touchUpInside" id="WBZ-WC-qIG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emj-M8-Je3">
-                                <rect key="frame" x="109.5" y="216" width="48" height="30"/>
+                                <rect key="frame" x="163.5" y="226" width="48" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -328,24 +314,21 @@
                         <color key="backgroundColor" red="0.51784205439999997" green="0.58159953360000005" blue="0.58617168659999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nSh-Zs-Abe" firstAttribute="leading" secondItem="FkA-W5-pE1" secondAttribute="centerX" constant="41" id="1gt-Q0-xGT"/>
-                            <constraint firstItem="emj-M8-Je3" firstAttribute="trailing" secondItem="FkA-W5-pE1" secondAttribute="centerX" constant="-30" id="33O-ey-IC3"/>
+                            <constraint firstItem="emj-M8-Je3" firstAttribute="centerX" secondItem="FkA-W5-pE1" secondAttribute="centerX" id="33O-ey-IC3"/>
                             <constraint firstItem="x3D-hA-XjU" firstAttribute="centerX" secondItem="FkA-W5-pE1" secondAttribute="centerX" id="3iR-9B-PWA"/>
                             <constraint firstItem="dYB-IQ-1RN" firstAttribute="top" secondItem="A5x-Tq-q7m" secondAttribute="top" id="45k-gL-LIP"/>
                             <constraint firstItem="dMO-7Y-SQB" firstAttribute="trailing" secondItem="FkA-W5-pE1" secondAttribute="centerX" constant="-41" id="641-hs-jZk"/>
-                            <constraint firstItem="I8i-jD-Aif" firstAttribute="top" secondItem="emj-M8-Je3" secondAttribute="top" id="8Mh-fz-CCq"/>
-                            <constraint firstItem="I8i-jD-Aif" firstAttribute="bottom" secondItem="emj-M8-Je3" secondAttribute="bottom" id="8tJ-mr-lAc"/>
                             <constraint firstItem="nSh-Zs-Abe" firstAttribute="top" secondItem="dYB-IQ-1RN" secondAttribute="top" id="9Vm-yC-f96"/>
                             <constraint firstItem="A5x-Tq-q7m" firstAttribute="top" secondItem="dMO-7Y-SQB" secondAttribute="top" id="Mer-an-Q5l"/>
                             <constraint firstItem="dYB-IQ-1RN" firstAttribute="leading" secondItem="FkA-W5-pE1" secondAttribute="centerX" constant="2" id="Ow0-C4-OUp"/>
                             <constraint firstItem="A5x-Tq-q7m" firstAttribute="trailing" secondItem="FkA-W5-pE1" secondAttribute="centerX" constant="-2" id="Tch-9H-Bfq"/>
                             <constraint firstItem="nSh-Zs-Abe" firstAttribute="bottom" secondItem="dYB-IQ-1RN" secondAttribute="bottom" id="X30-Wd-n0p"/>
                             <constraint firstItem="dMO-7Y-SQB" firstAttribute="top" secondItem="x3D-hA-XjU" secondAttribute="bottom" constant="20" id="cLc-D5-tkw"/>
+                            <constraint firstItem="emj-M8-Je3" firstAttribute="top" secondItem="dYB-IQ-1RN" secondAttribute="bottom" constant="30" id="cXu-Km-vaL"/>
                             <constraint firstItem="A5x-Tq-q7m" firstAttribute="bottom" secondItem="dMO-7Y-SQB" secondAttribute="bottom" id="fek-eh-fMk"/>
                             <constraint firstItem="x3D-hA-XjU" firstAttribute="leading" secondItem="FkA-W5-pE1" secondAttribute="leadingMargin" constant="10" id="fml-nR-oBp"/>
-                            <constraint firstItem="I8i-jD-Aif" firstAttribute="leading" secondItem="FkA-W5-pE1" secondAttribute="centerX" constant="5" id="lQ0-n3-fYb"/>
                             <constraint firstItem="x3D-hA-XjU" firstAttribute="top" secondItem="Ndx-Qq-MNK" secondAttribute="bottom" constant="100" id="lnR-fX-BvL"/>
                             <constraint firstItem="dYB-IQ-1RN" firstAttribute="bottom" secondItem="A5x-Tq-q7m" secondAttribute="bottom" id="uks-6l-cfA"/>
-                            <constraint firstItem="I8i-jD-Aif" firstAttribute="top" secondItem="A5x-Tq-q7m" secondAttribute="bottom" constant="20" id="uvl-xd-PF2"/>
                         </constraints>
                     </view>
                     <connections>

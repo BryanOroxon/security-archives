@@ -23,9 +23,6 @@ namespace Archives.ViewControllers
 
 		[Action ("digitEditingDidBegin:")]
 		partial void digitEditingDidBegin (UIKit.UITextField sender);
-
-		[Action ("validateTouchUpInside:")]
-		partial void validateTouchUpInside (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

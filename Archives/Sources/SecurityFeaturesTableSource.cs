@@ -56,10 +56,10 @@ namespace Archives.Sources
 				if (datacell.Selected)
 				{
 					//set feature passcode
-					_features[1].Enabled = true;
+					//_features[1].Enabled = true;
 
 					//update features
-					UpdateFeatures();
+					//UpdateFeatures();
 
 					//update flag
 					SecurityViewController.IsCommingFromSetPasscode = true;

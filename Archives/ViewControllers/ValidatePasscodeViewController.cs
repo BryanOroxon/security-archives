@@ -12,7 +12,7 @@ using LocalAuthentication;
 
 namespace Archives.ViewControllers
 {
-	public partial class ValidatePasscodeViewController : UIViewController, IUITextFieldDelegate
+	public partial class ValidatePasscodeViewController : UIViewController
 	{
 		public string TargetViewController = string.Empty;
 		public UINavigationController Navigation = null;
@@ -24,7 +24,7 @@ namespace Archives.ViewControllers
 			base.ViewDidLoad();
 			digits[0].BecomeFirstResponder();
 
-			Task.Run(async() =>
+			Task.Run(async () =>
 			{
 				var isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
 
@@ -64,28 +64,6 @@ namespace Archives.ViewControllers
 			DismissViewController(false, null);
 		}
 
-		partial void validateTouchUpInside(NSObject sender)
-		{
-			Task.Run(async () =>
-			{
-				string opasscode = await AkavacheHelper.TryGetSecureObject<string>("Passcode");
-				string rpasscode = string.Empty;
-
-				BeginInvokeOnMainThread(() =>
-				{
-					foreach (UITextField t in digits)
-						rpasscode += t.Text;
-
-					if (opasscode == rpasscode)
-					{
-						UIViewController uiviewcontroller = Storyboard.InstantiateViewController(TargetViewController);
-						Navigation.PushViewController(uiviewcontroller, true);
-						DismissViewController(false, null);
-					}
-				});
-			});
-		}
-
 		partial void digitEditingChanged(UITextField sender)
 		{
 			var nextDigit = digits.FirstOrDefault(tf => tf.Tag == sender.Tag + 1);
@@ -96,7 +74,35 @@ namespace Archives.ViewControllers
 			}
 			else
 			{
-				sender.ResignFirstResponder();
+				Task.Run(async () =>
+				{
+					string opasscode = await AkavacheHelper.TryGetSecureObject<string>("Passcode");
+					string rpasscode = string.Empty;
+
+					BeginInvokeOnMainThread(() =>
+					{
+						//backup second passcode and clear fields
+						foreach (UITextField t in digits)
+						{
+							rpasscode += t.Text;
+							t.Text = string.Empty;
+						}
+
+						//validate passcodes
+						if (opasscode != rpasscode)
+						{
+							nextDigit = digits.FirstOrDefault();
+							nextDigit.BecomeFirstResponder();
+							rpasscode = string.Empty;
+						}
+						else
+						{
+                            DismissViewController(false, null);
+							UIViewController uiviewcontroller = Storyboard.InstantiateViewController(TargetViewController);
+							Navigation.PushViewController(uiviewcontroller, true);
+						}
+					});
+				});
 			}
 		}
 

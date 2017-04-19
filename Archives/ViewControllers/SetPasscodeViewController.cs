@@ -9,7 +9,7 @@ using System.Reactive;
 
 namespace Archives.ViewControllers
 {
-	public partial class SetPasscodeViewController : UIViewController, IUITextFieldDelegate
+	public partial class SetPasscodeViewController : UIViewController
 	{
 		private int validation_round = 1;
 		private string opasscode = string.Empty;

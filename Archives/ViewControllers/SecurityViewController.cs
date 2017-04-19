@@ -22,6 +22,16 @@ namespace Archives.ViewControllers
 
 		public SecurityViewController(IntPtr handle) : base(handle) { }
 
+		public override void LoadView()
+		{
+			base.LoadView();
+			Task.Run(async () =>
+			{
+				_isPasscodeEnabled = await AkavacheHelper.TryGetObject<bool>("IsPasscodeEnabled");
+				_isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
+			});
+		}
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -30,17 +40,6 @@ namespace Archives.ViewControllers
 			features.Add(new SecurityFeature("Touch ID", false, false));
 			var source = new SecurityFeaturesTableSource(features, featuresTableView, this);
 			featuresTableView.Source = source;
-
-			Task.Run(async () =>
-			{
-				await Initialize();
-			});
-		}
-
-		private async Task Initialize()
-		{
-			_isPasscodeEnabled = await AkavacheHelper.TryGetObject<bool>("IsPasscodeEnabled");
-			_isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
 
 			BeginInvokeOnMainThread(() =>
 			{
@@ -57,9 +56,26 @@ namespace Archives.ViewControllers
 			{
 				Task.Run(async () =>
 				{
-					await Initialize();
+					var passcode = await AkavacheHelper.TryGetSecureObject<string>("Passcode");
+
+					bool hasPasscode = (passcode != null) ? true : false;
+					IObservable<Unit> result_passcode = BlobCache.UserAccount.InsertObject("IsPasscodeEnabled", hasPasscode);
+					_isPasscodeEnabled = hasPasscode;
+
+					_isTouchIDEnabled = await AkavacheHelper.TryGetObject<bool>("IsTouchIDEnabled");
+
+					BeginInvokeOnMainThread(() =>
+					{
+						features[0].Selected = _isPasscodeEnabled;
+						features[1].Selected = _isTouchIDEnabled;
+						features[1].Enabled = ((features[1].Selected) || (features[0].Selected)) ? true : false;
+
+						featuresTableView.ReloadData();
+					});
+
+					IsCommingFromSetPasscode = false;
 				});
-				IsCommingFromSetPasscode = false;
+
 			}
 		}
 
