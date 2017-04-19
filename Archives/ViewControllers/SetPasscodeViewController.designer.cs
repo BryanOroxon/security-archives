@@ -9,14 +9,14 @@ using System.CodeDom.Compiler;
 
 namespace Archives.ViewControllers
 {
-	[Register ("ValidatePasscodeViewController")]
-	partial class ValidatePasscodeViewController
+	[Register ("SetPasscodeViewController")]
+	partial class SetPasscodeViewController
 	{
 		[Outlet]
 		UIKit.UITextField[] digits { get; set; }
 
-		[Action ("cancelTouchUpInside:")]
-		partial void cancelTouchUpInside (Foundation.NSObject sender);
+		[Outlet]
+		UIKit.UILabel passcode { get; set; }
 
 		[Action ("digitEditingChanged:")]
 		partial void digitEditingChanged (UIKit.UITextField sender);
@@ -24,11 +24,15 @@ namespace Archives.ViewControllers
 		[Action ("digitEditingDidBegin:")]
 		partial void digitEditingDidBegin (UIKit.UITextField sender);
 
-		[Action ("validateTouchUpInside:")]
-		partial void validateTouchUpInside (Foundation.NSObject sender);
+		[Action ("next:")]
+		partial void next (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (passcode != null) {
+				passcode.Dispose ();
+				passcode = null;
+			}
 		}
 	}
 }

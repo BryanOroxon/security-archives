@@ -12,14 +12,12 @@ namespace Archives.ViewControllers
 	{
 		UIImagePickerController imagePicker;
 
-		public ArchivesViewController(IntPtr handle) : base(handle)
-		{
-			NavigationItem.Title = "Archives";
-		}
+		public ArchivesViewController(IntPtr handle) : base(handle) { }
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			NavigationItem.Title = "Archives";
 			NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, e) =>
 			{
 				LaunchUIAlertController();

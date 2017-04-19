@@ -7,20 +7,22 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives.ViewControllers
+namespace Archives
 {
-	[Register ("SecurityViewController")]
-	partial class SecurityViewController
+	[Register ("SetPasscodeViewController")]
+	partial class SetPasscodeViewController
 	{
 		[Outlet]
-		UIKit.UITableView featuresTableView { get; set; }
+		UIKit.UITextField[] digits { get; set; }
+
+		[Action ("digitEditingChanged:")]
+		partial void digitEditingChanged (Foundation.NSObject sender);
+
+		[Action ("next:")]
+		partial void next (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (featuresTableView != null) {
-				featuresTableView.Dispose ();
-				featuresTableView = null;
-			}
 		}
 	}
 }

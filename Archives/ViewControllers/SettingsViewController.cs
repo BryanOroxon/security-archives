@@ -5,7 +5,7 @@ using System;
 using Foundation;
 using UIKit;
 using System.Collections.Generic;
-using Archives.Entities;
+using Archives.Models;
 using Archives.Sources;
 using System.Threading.Tasks;
 using Archives.Helpers;
@@ -19,13 +19,12 @@ namespace Archives.ViewControllers
 		private List<Setting> settings = new List<Setting>();
 		private UIAlertController alert = null;
 
-		public SettingsViewController(IntPtr handle) : base(handle)
-		{
-			NavigationItem.Title = "Settings";
-		}
+		public SettingsViewController(IntPtr handle) : base(handle) { }
 
 		public override void ViewDidLoad()
 		{
+			base.ViewDidLoad();
+			NavigationItem.Title = "Settings";
 			settings.Add(new Setting("security_cell", "Security", "SecurityViewController"));
 			var settingsSource = new SettingsTableSource(settings, this);
 			settingsSource.ViewControllerEvent += ViewControllerEvent;
@@ -55,7 +54,6 @@ namespace Archives.ViewControllers
 							UIViewController uiviewcontroller = Storyboard.InstantiateViewController(e.TargetViewController);
 							NavigationController.PushViewController(uiviewcontroller, true);
 						}
-
 					});
 				});
 			}

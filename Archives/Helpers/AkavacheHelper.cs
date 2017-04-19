@@ -23,7 +23,7 @@ namespace Archives.Helpers
 			return result;
 		}
 
-		public static async Task<T> TrySecureGetObject<T>(string element)
+		public static async Task<T> TryGetSecureObject<T>(string element)
 		{
 			T result = default(T);
 			try

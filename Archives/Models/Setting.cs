@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Archives.Entities
+namespace Archives.Models
 {
 	public class Setting
 	{

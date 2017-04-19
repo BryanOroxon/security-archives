@@ -7,20 +7,14 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives.ViewControllers
+namespace Archives
 {
-	[Register ("SecurityViewController")]
-	partial class SecurityViewController
+	[Register ("MainViewController")]
+	partial class MainViewController
 	{
-		[Outlet]
-		UIKit.UITableView featuresTableView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (featuresTableView != null) {
-				featuresTableView.Dispose ();
-				featuresTableView = null;
-			}
 		}
 	}
 }
