@@ -192,6 +192,21 @@
     </Compile>
     <Compile Include="Models\Setting.cs" />
     <Compile Include="Extensions\AkavacheExtensions.cs" />
+    <Compile Include="ColbyTableViewController.cs" />
+    <Compile Include="ColbyTableViewController.designer.cs">
+      <DependentUpon>ColbyTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColbyTableViewCell.cs" />
+    <Compile Include="ColbyTableViewCell.designer.cs">
+      <DependentUpon>ColbyTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RobertoTableViewCell.cs" />
+    <Compile Include="RobertoTableViewCell.designer.cs">
+      <DependentUpon>RobertoTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\StoryboardExtensions.cs" />
+    <Compile Include="Keychain.cs" />
+    <Compile Include="PreferenceStore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

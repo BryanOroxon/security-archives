@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Akavache;
 using System.Reactive.Linq;
+using Foundation;
+using SettingsStudio;
 
 namespace Archives
 {
@@ -14,6 +16,11 @@ namespace Archives
 			try
 			{
 				result = await BlobCache.UserAccount.GetObject<T>(element);
+
+                Settings.SetSetting("somethingNotSecure", element);
+
+                var somethingNotSecure = Settings.StringForKey("somethingNotSecure");
+
 			}
 			catch (KeyNotFoundException)
 			{
