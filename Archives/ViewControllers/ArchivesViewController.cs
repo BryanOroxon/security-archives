@@ -12,7 +12,7 @@ namespace Archives.ViewControllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			NavigationItem.Title = "Archives";
+			NavigationItem.Title = Constants.__TITLE_ARCHIVES__;
 		}
 	}
 }

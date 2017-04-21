@@ -24,17 +24,17 @@ namespace Archives.ViewControllers
 			base.LoadView();
 			Task.Run(() =>
 			{
-				_isPasscodeEnabled = Settings.BoolForKey("IsPasscodeEnabled");
-				_isTouchIDEnabled = Settings.BoolForKey("IsTouchIDEnabled");
+				_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
+				_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
 			});
 		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			this.Title = "Security";
-			features.Add(new SecurityFeature("Passcode", false, true));
-			features.Add(new SecurityFeature("Touch ID", false, false));
+			this.Title = Constants.__TITLE_SECURITY__;
+			features.Add(new SecurityFeature(Constants.__SECURITY_TITLE_PASSCODE__, false, true));
+			features.Add(new SecurityFeature(Constants.__SECURITY_TITLE_TOUCHID__, false, false));
 			var source = new SecurityFeaturesTableSource(features, featuresTableView, this);
 			featuresTableView.Source = source;
 
@@ -57,10 +57,10 @@ namespace Archives.ViewControllers
 					var passcode = Keychain.GetItemFromKeychain(Keychain.AuthService).PrivateKey;
 
 					bool hasPasscode = (passcode != null) ? true : false;
-					Settings.SetSetting("IsPasscodeEnabled", hasPasscode);
+					Settings.SetSetting(Constants.__SECURITY_ISPASSCODEENABLED__, hasPasscode);
 					_isPasscodeEnabled = hasPasscode;
 
-					_isTouchIDEnabled = Settings.BoolForKey("IsTouchIDEnabled");
+					_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
 
 					BeginInvokeOnMainThread(() =>
 					{

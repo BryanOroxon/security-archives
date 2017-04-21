@@ -20,7 +20,7 @@ namespace Archives.ViewControllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			this.Title = "Passcode";
+			this.Title = Constants.__TITLE_SETPASSCODE__;
 			this.passcode.Text = "Set Passcode";
 			digits[0].BecomeFirstResponder();
 		}
@@ -79,7 +79,7 @@ namespace Archives.ViewControllers
 					else
 					{
 						//save passcode in secure internal storage
-                        Keychain.SaveItemToKeychain(Keychain.AuthService, "Passcode", rpasscode);
+                        Keychain.SaveItemToKeychain(Keychain.AuthService, Constants.__SECURITY_PASSCODE__, rpasscode);
 
 						//return to security features
 						this.NavigationController.PopViewController(true);

@@ -25,7 +25,7 @@ namespace Archives.ViewControllers
 
 			Task.Run(() =>
 			{
-				var isTouchIDEnabled = Settings.BoolForKey("IsTouchIDEnabled");
+				var isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
 
 				if (isTouchIDEnabled)
 					LaunchTouchID();

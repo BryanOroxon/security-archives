@@ -105,6 +105,7 @@
     <Folder Include="Controls\" />
     <Folder Include="Models\" />
     <Folder Include="Storage\" />
+    <Folder Include="Constants\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -162,6 +163,7 @@
     <Compile Include="Extensions\StoryboardExtensions.cs" />
     <Compile Include="Storage\Keychain.cs" />
     <Compile Include="Storage\PreferenceStore.cs" />
+    <Compile Include="Constants\Constants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

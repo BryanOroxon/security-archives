@@ -21,7 +21,7 @@ namespace Archives.ViewControllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			NavigationItem.Title = "Settings";
+			NavigationItem.Title = Constants.__TITLE_SETTINGS__;
 			settings.Add(new Setting("security_cell", "Security", "SecurityViewController"));
 			var settingsSource = new SettingsTableSource(settings, this);
 			settingsSource.ViewControllerEvent += ViewControllerEvent;
@@ -33,7 +33,7 @@ namespace Archives.ViewControllers
 		{
 			try
 			{
-				_isPasscodeEnabled = Settings.BoolForKey("IsPasscodeEnabled");
+				_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
 
 				BeginInvokeOnMainThread(() =>
 				{
