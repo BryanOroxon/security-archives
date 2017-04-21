@@ -28,6 +28,8 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>Roberto's Provisioning Profile</CodesignProvision>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -85,56 +87,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Akavache">
-      <HintPath>..\packages\akavache.core.5.0.0\lib\Xamarin.iOS10\Akavache.dll</HintPath>
-    </Reference>
-    <Reference Include="Akavache.Sqlite3">
-      <HintPath>..\packages\akavache.sqlite3.5.0.0\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.3\lib\portable-windows8+net45+wp8\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Splat">
-      <HintPath>..\packages\Splat.2.0.0\lib\Xamarin.iOS10\Splat.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.core">
-      <HintPath>..\packages\SQLitePCLRaw.core.1.1.2\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.lib.e_sqlite3">
-      <HintPath>..\packages\SQLitePCLRaw.lib.e_sqlite3.ios_unified.static.1.1.2\lib\Xamarin.iOS10\SQLitePCLRaw.lib.e_sqlite3.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.provider.internal">
-      <HintPath>..\packages\SQLitePCLRaw.provider.internal.ios_unified.1.1.2\lib\Xamarin.iOS10\SQLitePCLRaw.provider.internal.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_e_sqlite3">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.2\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_e_sqlite3.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_v2">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.2\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Settings.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Settings">
-      <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +104,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Controls\" />
     <Folder Include="Models\" />
+    <Folder Include="Storage\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -160,7 +118,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Sources\SettingsTableSource.cs" />
     <Compile Include="ViewControllers\SettingsViewController.cs" />
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
@@ -170,7 +127,6 @@
     <Compile Include="ViewControllers\ArchivesViewController.designer.cs">
       <DependentUpon>ArchivesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\SecStatusCodeExtensions.cs" />
     <Compile Include="ViewControllers\ValidatePasscodeViewController.cs" />
     <Compile Include="ViewControllers\ValidatePasscodeViewController.designer.cs">
       <DependentUpon>ValidatePasscodeViewController.cs</DependentUpon>
@@ -191,7 +147,6 @@
       <DependentUpon>SetPasscodeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Setting.cs" />
-    <Compile Include="Extensions\AkavacheExtensions.cs" />
     <Compile Include="ColbyTableViewController.cs" />
     <Compile Include="ColbyTableViewController.designer.cs">
       <DependentUpon>ColbyTableViewController.cs</DependentUpon>
@@ -205,8 +160,9 @@
       <DependentUpon>RobertoTableViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\StoryboardExtensions.cs" />
-    <Compile Include="Keychain.cs" />
-    <Compile Include="PreferenceStore.cs" />
+    <Compile Include="Storage\Keychain.cs" />
+    <Compile Include="Storage\PreferenceStore.cs" />
   </ItemGroup>
+  <Import Project="..\Archives.Shared\Archives.Shared.projitems" Label="Shared" Condition="Exists('..\Archives.Shared\Archives.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

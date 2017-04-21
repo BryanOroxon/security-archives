@@ -12,7 +12,7 @@ namespace Archives.Sources
 		private List<Setting> _settings;
 		private UIViewController _owner;
 
-		public delegate Task ViewControllerHandler(object sender, Setting e);
+		public delegate void ViewControllerHandler(object sender, Setting e);
 		public event ViewControllerHandler ViewControllerEvent;
 
 		public SettingsTableSource(List<Setting> settings, UIViewController owner)

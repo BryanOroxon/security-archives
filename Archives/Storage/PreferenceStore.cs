@@ -10,15 +10,12 @@ using Foundation;
 
 using static Foundation.NSUserDefaults;
 
-namespace SettingsStudio
+namespace Archives.Storage
 {
 
 	public static class Settings
 	{
-
-
 		#region Utilities
-
 
 		const string _settingsDir = "Settings";
 		const string _bundleName = "bundle";
@@ -26,7 +23,6 @@ namespace SettingsStudio
 		const string _key = "Key";
 		const string _defaultValue = "DefaultValue";
 		const string _preferenceSpecifiers = "PreferenceSpecifiers";
-
 
 		public static void RegisterDefaultSettings()
 		{

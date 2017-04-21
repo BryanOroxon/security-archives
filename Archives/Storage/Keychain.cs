@@ -1,8 +1,10 @@
-﻿#if __IOS__ || __ANDROID__
+﻿#define __IOS__
+#if __IOS__ || __ANDROID__
 
 
 #if __IOS__
 
+using System;
 using Foundation;
 using Security;
 
@@ -19,20 +21,19 @@ using Android.Content;
 
 #endif
 
-namespace Archives
+namespace Archives.Storage
 {
 	public static class Keychain
 	{
 
 #if __IOS__
 
-        public const string LoginService = "LoginService";
+		public const string AuthService = "authservice";
 
 		static SecRecord genericRecord(string service) => new SecRecord(SecKind.GenericPassword)
 		{
-			Service = $"{NSBundle.MainBundle.BundleIdentifier}.rcervantes.archive-{service}"
+			Service = $"{NSBundle.MainBundle.BundleIdentifier}-{service}"
 		};
-
 
 		public static (string Account, string PrivateKey) GetItemFromKeychain(string service)
 		{
@@ -49,7 +50,6 @@ namespace Archives
 
 			return (null, null);
 		}
-
 
 		public static bool SaveItemToKeychain(string service, string account, string privateKey)
 		{
@@ -104,7 +104,7 @@ namespace Archives
             var context = Android.App.Application.Context;
 
 
-            var serviceId = $"{context.PackageName}.rcervantes.archive-{service}";
+            var serviceId = $"{context.PackageName}.rcervantes.archives-{service}";
 
             if (keyStoresCache.TryGetValue (serviceId, out KeyStore keystore))
             {
@@ -174,7 +174,7 @@ namespace Archives
 
             var password = service.ToCharArray ();
 
-            var serviceId = $"{context.PackageName}.rcervantes.archive-{service}";
+            var serviceId = $"{context.PackageName}.rcervantes.archives-{service}";
 
             var keystore = getKeystore (service);
 

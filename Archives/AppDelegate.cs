@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Text;
-using Akavache;
 using Foundation;
 using LocalAuthentication;
 using Security;
@@ -27,8 +26,6 @@ namespace Archives
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
-
-			BlobCache.ApplicationName = "Archives";
 
 			// Code to start the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD

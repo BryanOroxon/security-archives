@@ -4,8 +4,7 @@ using System;
 using Foundation;
 using UIKit;
 using System.Linq;
-using Akavache;
-using System.Reactive;
+using Archives.Storage;
 
 namespace Archives.ViewControllers
 {
@@ -78,9 +77,7 @@ namespace Archives.ViewControllers
 					else
 					{
 						//save passcode in secure internal storage
-						IObservable<Unit> result_codedata = BlobCache.Secure.InsertObject("Passcode", rpasscode);
-
-                        Keychain.SaveItemToKeychain(Keychain.LoginService, "Passcode", rpasscode);
+                        Keychain.SaveItemToKeychain(Keychain.AuthService, "Passcode", rpasscode);
 
 						//return to security features
 						this.NavigationController.PopViewController(true);

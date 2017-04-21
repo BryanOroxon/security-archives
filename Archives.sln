@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archives", "Archives\Archiv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archives.UITests", "Archives.UITests\Archives.UITests.csproj", "{3986518A-F748-439A-98C2-C5EDD3793A2F}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Archives.Shared", "Archives.Shared\Archives.Shared.shproj", "{CD4E0642-3E32-4DE5-8AB0-D9C9B96C4E36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator

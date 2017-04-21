@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reactive;
-using Akavache;
 using Archives.Controls;
 using Archives.Models;
+using Archives.Storage;
 using Archives.ViewControllers;
 using Foundation;
 using UIKit;
@@ -51,7 +50,7 @@ namespace Archives.Sources
 			if ((int)uiswitch.Tag == 0)
 			{
 				//delete passcode from secure internal storage
-				IObservable<Unit> result_codedata = BlobCache.Secure.Invalidate("Passcode");
+				Keychain.RemoveItemFromKeychain(Keychain.AuthService);
 
 				if (datacell.Selected)
 				{
@@ -82,10 +81,10 @@ namespace Archives.Sources
 		void UpdateFeatures()
 		{
 			//save passcode feature
-			IObservable<Unit> result_passcode = BlobCache.UserAccount.InsertObject("IsPasscodeEnabled", _features[0].Selected);
+			Settings.SetSetting("IsPasscodeEnabled", _features[0].Selected);
 
 			//save touch id feature
-			IObservable<Unit> result_touchid = BlobCache.UserAccount.InsertObject("IsTouchIDEnabled", _features[1].Selected);
+			Settings.SetSetting("IsTouchIDEnabled", _features[1].Selected);
 		}
 
 		public override nint RowsInSection(UITableView tableview, nint section)

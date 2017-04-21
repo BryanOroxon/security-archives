@@ -4,10 +4,9 @@ using System;
 using Foundation;
 using UIKit;
 using System.Linq;
-using Akavache;
-using System.Reactive;
 using System.Threading.Tasks;
 using LocalAuthentication;
+using Archives.Storage;
 
 namespace Archives.ViewControllers
 {
@@ -23,26 +22,14 @@ namespace Archives.ViewControllers
 			base.ViewDidLoad();
 			digits[0].BecomeFirstResponder();
 
-			Task.Run(async () =>
+			Task.Run(() =>
 			{
-				var isTouchIDEnabled = await BlobCache.UserAccount.TryGetObject<bool>("IsTouchIDEnabled");
+				var isTouchIDEnabled = Settings.BoolForKey("IsTouchIDEnabled");
 
 				if (isTouchIDEnabled)
 					LaunchTouchID();
 			});
 		}
-
-
-		/* Auth flow
-         * 
-         * 1. Require them to either
-         * 2. Create new passcode (account) -> Save passcode to the keychain (or somewhere securly)
-         * 3. 
-         * 
-         * 
-         * 
-         */
-
 
 		void LaunchTouchID()
 		{
@@ -84,12 +71,9 @@ namespace Archives.ViewControllers
 			}
 			else
 			{
-				Task.Run(async () =>
+				Task.Run(() =>
 				{
-					string opasscode = await BlobCache.Secure.TryGetSecureObject<string>("Passcode");
-
-                    var keyItem = Keychain.GetItemFromKeychain(Keychain.LoginService).PrivateKey;
-
+					string opasscode = Keychain.GetItemFromKeychain(Keychain.AuthService).PrivateKey;
 					string rpasscode = string.Empty;
 
 					BeginInvokeOnMainThread(() =>
@@ -110,7 +94,7 @@ namespace Archives.ViewControllers
 						}
 						else
 						{
-                            DismissViewController(false, null);
+							DismissViewController(false, null);
 							UIViewController uiviewcontroller = Storyboard.InstantiateViewController(TargetViewController);
 							Navigation.PushViewController(uiviewcontroller, true);
 						}
