@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LocalAuthentication;
 using Archives.Storage;
+using AudioToolbox;
 
 namespace Archives.ViewControllers
 {
@@ -91,6 +92,7 @@ namespace Archives.ViewControllers
 							nextDigit = digits.FirstOrDefault();
 							nextDigit.BecomeFirstResponder();
 							rpasscode = string.Empty;
+							SystemSound.Vibrate.PlayAlertSound();
 						}
 						else
 						{

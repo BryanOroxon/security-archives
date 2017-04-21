@@ -1,33 +1,10 @@
-﻿#define __IOS__
-#if __IOS__ || __ANDROID__
-
-
-#if __IOS__
-
-using System;
-using Foundation;
+﻿using Foundation;
 using Security;
-
-#elif __ANDROID__
-
-using System;
-using System.Collections.Generic;
-
-using Java.IO;
-using Java.Security;
-using Javax.Crypto;
-
-using Android.Content;
-
-#endif
 
 namespace Archives.Storage
 {
 	public static class Keychain
 	{
-
-#if __IOS__
-
 		public const string AuthService = "authservice";
 
 		static SecRecord genericRecord(string service) => new SecRecord(SecKind.GenericPassword)
@@ -93,133 +70,5 @@ namespace Archives.Storage
 
 			return success;
 		}
-
-#else
-
-        static Dictionary<string, KeyStore> keyStoresCache = new Dictionary<string, KeyStore> ();
-
-
-        KeyStore getKeystore (string service)
-        {
-            var context = Android.App.Application.Context;
-
-
-            var serviceId = $"{context.PackageName}.rcervantes.archives-{service}";
-
-            if (keyStoresCache.TryGetValue (serviceId, out KeyStore keystore))
-            {
-                return keystore;
-            }
-
-            var password = service.ToCharArray ();
-
-            keystore = KeyStore.GetInstance (KeyStore.DefaultType);
-
-            // var protection = new KeyStore.PasswordProtection (password);
-
-            try
-            {
-                // TODO: this isn't right, fix it
-                using (var stream = context.OpenFileInput (serviceId))
-                {
-                    keystore.Load (stream, password);
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                keystore.Load (null, password);
-            }
-
-            keyStoresCache [serviceId] = keystore;
-
-            return keystore;
-        }
-
-
-        (string Account, string PrivateKey) getItemFromKeychain (string service)
-        {
-            var context = Android.App.Application.Context;
-
-            var password = service.ToCharArray ();
-
-            var protection = new KeyStore.PasswordProtection (password);
-
-            var keystore = getKeystore (service);
-
-            var aliases = keystore.Aliases ();
-
-            while (aliases.HasMoreElements)
-            {
-                var alias = aliases.NextElement ().ToString ();
-
-                var item = keystore.GetEntry (alias, protection) as KeyStore.SecretKeyEntry;
-
-                if (item != null)
-                {
-                    var bytes = item.SecretKey.GetEncoded ();
-
-                    var serialized = System.Text.Encoding.UTF8.GetString (bytes);
-
-                    return (alias, serialized);
-                }
-            }
-
-            return (null, null);
-        }
-
-
-        bool saveItemToKeychain (string service, string account, string privateKey)
-        {
-            var context = Android.App.Application.Context;
-
-            var password = service.ToCharArray ();
-
-            var serviceId = $"{context.PackageName}.rcervantes.archives-{service}";
-
-            var keystore = getKeystore (service);
-
-            var item = new KeychainItem (privateKey);
-
-            var secretEntry = new KeyStore.SecretKeyEntry (item);
-
-            keystore.SetEntry (account, secretEntry, new KeyStore.PasswordProtection (password));
-
-            using (var stream = context.OpenFileOutput (serviceId, FileCreationMode.Private))
-            {
-                keystore.Store (stream, password);
-            }
-
-            return true;
-        }
-
-
-        bool removeItemFromKeychain (string service)
-        {
-            throw new NotImplementedException ();
-        }
-
-
-        class KeychainItem : Java.Lang.Object, ISecretKey
-        {
-            const string raw = "RAW";
-
-            byte [] bytes;
-
-            public KeychainItem (string data)
-            {
-                if (data == null) throw new ArgumentNullException ();
-
-                bytes = System.Text.Encoding.UTF8.GetBytes (data);
-            }
-
-            public byte [] GetEncoded () => bytes;
-
-            public string Algorithm => raw;
-
-            public string Format => raw;
-        }
-#endif
 	}
 }
-
-#endif
