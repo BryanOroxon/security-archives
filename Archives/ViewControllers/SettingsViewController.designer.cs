@@ -12,15 +12,9 @@ namespace Archives.ViewControllers
 	[Register ("SettingsViewController")]
 	partial class SettingsViewController
 	{
-		[Outlet]
-		UIKit.UITableView SettingsTableView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (SettingsTableView != null) {
-				SettingsTableView.Dispose ();
-				SettingsTableView = null;
-			}
 		}
 	}
 }

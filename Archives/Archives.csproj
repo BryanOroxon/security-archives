@@ -99,13 +99,12 @@
     <ImageAsset Include="Assets.xcassets\Contents.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sources\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Controls\" />
     <Folder Include="Models\" />
     <Folder Include="Storage\" />
     <Folder Include="Constants\" />
+    <Folder Include="TableViewCells\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -119,7 +118,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Sources\SettingsTableSource.cs" />
     <Compile Include="ViewControllers\SettingsViewController.cs" />
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
       <DependentUpon>SettingsViewController.cs</DependentUpon>
@@ -132,38 +130,31 @@
     <Compile Include="ViewControllers\ValidatePasscodeViewController.designer.cs">
       <DependentUpon>ValidatePasscodeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainViewController.cs" />
-    <Compile Include="MainViewController.designer.cs">
-      <DependentUpon>MainViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\SecurityViewController.cs" />
     <Compile Include="ViewControllers\SecurityViewController.designer.cs">
       <DependentUpon>SecurityViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\SecurityFeaturesTableSource.cs" />
-    <Compile Include="Controls\CustomSwitchCell.cs" />
     <Compile Include="Models\SecurityFeature.cs" />
     <Compile Include="ViewControllers\SetPasscodeViewController.cs" />
     <Compile Include="ViewControllers\SetPasscodeViewController.designer.cs">
       <DependentUpon>SetPasscodeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Setting.cs" />
-    <Compile Include="ColbyTableViewController.cs" />
-    <Compile Include="ColbyTableViewController.designer.cs">
-      <DependentUpon>ColbyTableViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ColbyTableViewCell.cs" />
-    <Compile Include="ColbyTableViewCell.designer.cs">
-      <DependentUpon>ColbyTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RobertoTableViewCell.cs" />
-    <Compile Include="RobertoTableViewCell.designer.cs">
-      <DependentUpon>RobertoTableViewCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\StoryboardExtensions.cs" />
     <Compile Include="Storage\Keychain.cs" />
     <Compile Include="Storage\PreferenceStore.cs" />
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="ViewControllers\AboutViewController.cs" />
+    <Compile Include="ViewControllers\AboutViewController.designer.cs">
+      <DependentUpon>AboutViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableViewCells\SecurityTableViewCell.cs" />
+    <Compile Include="TableViewCells\SecurityTableViewCell.designer.cs">
+      <DependentUpon>SecurityTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableViewCells\SettingTableViewCell.cs" />
+    <Compile Include="TableViewCells\SettingTableViewCell.designer.cs">
+      <DependentUpon>SettingTableViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

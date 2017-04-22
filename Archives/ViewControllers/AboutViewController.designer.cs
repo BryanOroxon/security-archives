@@ -9,14 +9,18 @@ using System.CodeDom.Compiler;
 
 namespace Archives.ViewControllers
 {
-	[Register ("SecurityViewController")]
-	partial class SecurityViewController
+	[Register ("AboutViewController")]
+	partial class AboutViewController
 	{
-		[Action ("switchCellValueChanged:")]
-		partial void switchCellValueChanged (UIKit.UISwitch sender);
+		[Outlet]
+		UIKit.UIWebView webView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (webView != null) {
+				webView.Dispose ();
+				webView = null;
+			}
 		}
 	}
 }

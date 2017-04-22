@@ -7,14 +7,20 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives
+namespace Archives.TableViewCells
 {
-	[Register ("MainViewController")]
-	partial class MainViewController
+	[Register ("SecurityTableViewCell")]
+	partial class SecurityTableViewCell
 	{
+		[Outlet]
+		UIKit.UISwitch switchViewCell { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (switchViewCell != null) {
+				switchViewCell.Dispose ();
+				switchViewCell = null;
+			}
 		}
 	}
 }

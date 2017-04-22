@@ -4,7 +4,7 @@ namespace Archives
 	public static class Constants
 	{
 		//Titles
-		public const string __TITLE_ARCHIVES__ = "Archives";
+		public const string __TITLE_ARCHIVES__ = "Sample Application";
 		public const string __TITLE_SECURITY__ = "Security";
 		public const string __TITLE_SETPASSCODE__ = "Passcode";
 		public const string __TITLE_SETTINGS__ = "Settings";

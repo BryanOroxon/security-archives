@@ -2,11 +2,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Archives.Models;
-using Archives.Sources;
 using Archives.Storage;
 using UIKit;
+using NomadCode.UIExtensions;
+using Foundation;
+using Archives.TableViewCells;
 
 namespace Archives.ViewControllers
 {
@@ -14,68 +14,136 @@ namespace Archives.ViewControllers
 	{
 		private bool _isPasscodeEnabled = false;
 		private bool _isTouchIDEnabled = false;
-		private List<SecurityFeature> features = new List<SecurityFeature>();
-		public static bool IsCommingFromSetPasscode = false;
+		private List<string> Items { get; set; } = new List<string>();
+		public bool IsCommingFromSetPasscode = false;
 
 		public SecurityViewController(IntPtr handle) : base(handle) { }
-
-		public override void LoadView()
-		{
-			base.LoadView();
-			Task.Run(() =>
-			{
-				_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
-				_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
-			});
-		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			this.Title = Constants.__TITLE_SECURITY__;
-			features.Add(new SecurityFeature(Constants.__SECURITY_TITLE_PASSCODE__, false, true));
-			features.Add(new SecurityFeature(Constants.__SECURITY_TITLE_TOUCHID__, false, false));
-			var source = new SecurityFeaturesTableSource(features, featuresTableView, this);
-			featuresTableView.Source = source;
-
-			BeginInvokeOnMainThread(() =>
-			{
-				features[0].Selected = _isPasscodeEnabled;
-				features[1].Selected = _isTouchIDEnabled;
-				features[1].Enabled = ((features[1].Selected) || (features[0].Selected)) ? true : false;
-				featuresTableView.ReloadData();
-			});
+			_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
+			_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
+			Items.Add("Passcode");
+			Items.Add("Touch ID");
 		}
 
-		public override void ViewWillAppear(Boolean animated)
+		public override void ViewWillAppear(bool animated)
 		{
-			//catch when the passcode set view has been popped
+			base.ViewWillAppear(animated);
+
 			if (IsCommingFromSetPasscode)
 			{
-				Task.Run(() =>
+				var passcode = Keychain.GetItemFromKeychain(Keychain.AuthService).PrivateKey;
+				bool hasPasscode = (passcode != null) ? true : false;
+
+				if (!hasPasscode)
 				{
-					var passcode = Keychain.GetItemFromKeychain(Keychain.AuthService).PrivateKey;
+					//get passcode switch value
+					NSIndexPath passcode_idx = NSIndexPath.FromRowSection(0, 0);
+					UITableViewCell passcode_cell = TableView.CellAt(passcode_idx);
+					((UISwitch)passcode_cell.AccessoryView).On = false;
 
-					bool hasPasscode = (passcode != null) ? true : false;
-					Settings.SetSetting(Constants.__SECURITY_ISPASSCODEENABLED__, hasPasscode);
-					_isPasscodeEnabled = hasPasscode;
-
-					_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
-
-					BeginInvokeOnMainThread(() =>
-					{
-						features[0].Selected = _isPasscodeEnabled;
-						features[1].Selected = _isTouchIDEnabled;
-						features[1].Enabled = ((features[1].Selected) || (features[0].Selected)) ? true : false;
-
-						featuresTableView.ReloadData();
-					});
-
-					IsCommingFromSetPasscode = false;
-				});
-
+					//get touchid switch value
+					NSIndexPath touchid_idx = NSIndexPath.FromRowSection(1, 0);
+					UITableViewCell touchid_cell = TableView.CellAt(touchid_idx);
+					((UISwitch)touchid_cell.AccessoryView).On = false;
+					((UISwitch)touchid_cell.AccessoryView).Enabled = false;
+				}
 			}
 		}
 
+		public override nint NumberOfSections(UITableView tableView) => 1;
+
+		public override nint RowsInSection(UITableView tableView, nint section) => Items.Count;
+
+		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+		{
+			var cell = tableView.Dequeue<SecurityTableViewCell>(indexPath);
+			var item = Items[indexPath.Row];
+
+			cell.AccessoryView.Tag = indexPath.Row;
+			cell.TextLabel.Text = item;
+
+			if (indexPath.Row == 0)
+			{
+				((UISwitch)cell.AccessoryView).On = _isPasscodeEnabled;
+			}
+
+			if (indexPath.Row == 1)
+			{
+				((UISwitch)cell.AccessoryView).On = _isTouchIDEnabled;
+				((UISwitch)cell.AccessoryView).Enabled = ((_isPasscodeEnabled) || (_isTouchIDEnabled)) ? true : false;
+			}
+
+			return cell;
+		}
+
+		partial void switchCellValueChanged(UISwitch sender)
+		{
+			var uiswitch = sender as UISwitch;
+
+			if ((int)uiswitch.Tag == 0)
+			{
+				//delete passcode from secure internal storage
+				Keychain.RemoveItemFromKeychain(Keychain.AuthService);
+
+				if (uiswitch.On)
+				{
+					//get touchid switch value
+					NSIndexPath touchid_idx = NSIndexPath.FromRowSection(1, 0);
+					UITableViewCell touchid_cell = TableView.CellAt(touchid_idx);
+					((UISwitch)touchid_cell.AccessoryView).Enabled = true;
+
+					//update flag
+					IsCommingFromSetPasscode = true;
+
+					//go and set a new passcode
+					UIViewController uiview = Storyboard.InstantiateViewController("SetPasscodeViewController");
+					NavigationController.PushViewController(uiview, true);
+				}
+				else
+				{
+					//get touchid switch value
+					NSIndexPath touchid_idx = NSIndexPath.FromRowSection(1, 0);
+					UITableViewCell touchid_cell = TableView.CellAt(touchid_idx);
+					((UISwitch)touchid_cell.AccessoryView).On = false;
+					((UISwitch)touchid_cell.AccessoryView).Enabled = false;
+
+					UpdateSettings();
+				}
+			}
+			else
+				UpdateSettings();
+		}
+
+		private void UpdateSettings()
+		{
+			UpdatePasscode();
+			UpdateTouchID();
+		}
+
+		private void UpdatePasscode()
+		{
+			//get passcode switch value
+			NSIndexPath passcode_idx = NSIndexPath.FromRowSection(0, 0);
+			UITableViewCell passcode_cell = TableView.CellAt(passcode_idx);
+			var passcode_value = ((UISwitch)passcode_cell.AccessoryView).On;
+
+			//save passcode feature
+			Settings.SetSetting(Constants.__SECURITY_ISPASSCODEENABLED__, passcode_value);
+		}
+
+		private void UpdateTouchID()
+		{
+			//get touchid switch value
+			NSIndexPath touchid_idx = NSIndexPath.FromRowSection(1, 0);
+			UITableViewCell touchid_cell = TableView.CellAt(touchid_idx);
+			var touchid_value = ((UISwitch)touchid_cell.AccessoryView).On;
+
+			//save touch id feature
+			Settings.SetSetting(Constants.__SECURITY_ISTOUCHIDENABLED__, touchid_value);
+		}
 	}
 }
