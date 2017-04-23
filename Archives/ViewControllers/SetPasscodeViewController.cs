@@ -79,7 +79,10 @@ namespace Archives.ViewControllers
 					else
 					{
 						//save passcode in secure internal storage
-                        Keychain.SaveItemToKeychain(Keychain.AuthService, Constants.__SECURITY_PASSCODE__, rpasscode);
+						Keychain.SaveItemToKeychain(Keychain.AuthService, Constants.__SECURITY_PASSCODE__, rpasscode);
+
+						//save passcode feature
+						Settings.SetSetting(Constants.__SECURITY_ISPASSCODEENABLED__, true);
 
 						//return to security features
 						this.NavigationController.PopViewController(true);

@@ -9,6 +9,11 @@ namespace Archives.ViewControllers
 	{
 		public ArchivesViewController(IntPtr handle) : base(handle) { }
 
+		public override void LoadView()
+		{
+			base.LoadView();
+		}
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();

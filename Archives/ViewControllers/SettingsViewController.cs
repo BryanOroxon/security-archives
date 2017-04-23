@@ -43,19 +43,8 @@ namespace Archives.ViewControllers
 		{
 			if (indexPath.Row == 0)
 			{
-				_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
-				if (_isPasscodeEnabled)
-				{
-					var validate = Storyboard.Instantiate<ValidatePasscodeViewController>();
-					validate.TargetViewController = "SecurityViewController";
-					validate.Navigation = NavigationController;
-					PresentViewController(validate, true, null);
-				}
-				else
-				{
-					UIViewController uiview = Storyboard.InstantiateViewController("SecurityViewController");
-					NavigationController.PushViewController(uiview, true);
-				}
+				UIViewController uiview = Storyboard.InstantiateViewController("SecurityViewController");
+				NavigationController.PushViewController(uiview, true);
 			}
 
 			if (indexPath.Row == 1)

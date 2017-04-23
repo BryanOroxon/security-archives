@@ -19,12 +19,24 @@ namespace Archives.ViewControllers
 
 		public SecurityViewController(IntPtr handle) : base(handle) { }
 
+		public override void LoadView()
+		{
+			base.LoadView();
+			_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
+			_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
+
+			if (_isPasscodeEnabled)
+			{
+				var uiview = Storyboard.Instantiate<ValidatePasscodeViewController>();
+				uiview.Navigation = NavigationController;
+				PresentViewController(uiview, false, null);
+			}
+		}
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			this.Title = Constants.__TITLE_SECURITY__;
-			_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
-			_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
 			Items.Add("Passcode");
 			Items.Add("Touch ID");
 		}
