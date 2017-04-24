@@ -97,6 +97,10 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\Honeycombs Filled-50.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\Honeycombs Filled-50.imageset\Honeycombs Filled-50.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\Settings Filled-50.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\Settings Filled-50.imageset\Settings Filled-50.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewControllers\" />

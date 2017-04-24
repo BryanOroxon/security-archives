@@ -15,7 +15,7 @@
         <scene sceneID="USE-se-3jo">
             <objects>
                 <navigationController id="hs5-Ml-CVN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="kfh-FU-9gh"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings Filled-50" id="kfh-FU-9gh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NWq-Uk-miN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -61,7 +61,7 @@
         <scene sceneID="D1q-bS-XmN">
             <objects>
                 <navigationController id="3V1-xD-TCv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sample Application" id="D57-wZ-Zgw"/>
+                    <tabBarItem key="tabBarItem" title="Sample Application" image="Honeycombs Filled-50" id="D57-wZ-Zgw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KaV-yF-rYh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -601,4 +601,8 @@
             <point key="canvasLocation" x="-3375.1999999999998" y="-160.56971514242881"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Honeycombs Filled-50" width="25" height="25"/>
+        <image name="Settings Filled-50" width="25" height="25"/>
+    </resources>
 </document>
