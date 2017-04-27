@@ -1,4 +1,4 @@
-﻿namespace FaceAPI.iOS
+﻿namespace FaceAPI.iOS.Client.V1
 {
 	public class ConfigClient
 	{

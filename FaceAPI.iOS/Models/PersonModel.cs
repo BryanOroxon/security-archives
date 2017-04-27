@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FaceAPI.Models
+namespace FaceAPI.iOS.Models
 {
 	public class PersonModel : FaceModel
 	{

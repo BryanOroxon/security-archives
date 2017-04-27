@@ -144,7 +144,8 @@ namespace Archives.ViewControllers
 			else if ((int)uiswitch.Tag == 2)
 			{
 				//go and set a new face recognition configuration
-				UIViewController uiview = Storyboard.InstantiateViewController("PeopleViewController");
+				var uistoryboard = UIStoryboard.FromName("Face", null);
+				UIViewController uiview = uistoryboard.InstantiateViewController("PeopleViewController");
 				NavigationController.PushViewController(uiview, true);
 			}
 			else

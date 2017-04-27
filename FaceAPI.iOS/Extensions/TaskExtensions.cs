@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FaceAPI.Extensions
+namespace FaceAPI.iOS.Extensions
 {
 	public static class TaskExtensions
 	{

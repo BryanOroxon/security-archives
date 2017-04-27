@@ -1,9 +1,5 @@
-﻿using System.Reflection;
-using System.Text;
-using FaceAPI.iOS;
+﻿using FaceAPI.iOS.Client.V1;
 using Foundation;
-using LocalAuthentication;
-using Security;
 using UIKit;
 
 namespace Archives

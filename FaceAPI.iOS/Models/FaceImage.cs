@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace FaceAPI.Models
+namespace FaceAPI.iOS.Models
 {
 	public class FaceImageModel : FaceModel
 	{

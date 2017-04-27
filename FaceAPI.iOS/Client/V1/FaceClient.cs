@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FaceAPI.iOS.Interfaces.V1;
-using FaceAPI.Models;
+using FaceAPI.iOS.Models;
 using Foundation;
 using UIKit;
 using Xamarin.Cognitive.Face.iOS;
-using FaceAPI.Extensions;
+using FaceAPI.iOS.Extensions;
 using FaceAPI.iOS.Utils;
 
 namespace FaceAPI.iOS.Client.V1

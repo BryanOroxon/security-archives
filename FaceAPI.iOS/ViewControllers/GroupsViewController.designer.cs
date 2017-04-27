@@ -7,11 +7,13 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
-	[Register ("GroupPersonCollectionViewController")]
-	partial class GroupPersonCollectionViewController
+	[Register ("GroupsViewController")]
+	partial class GroupsViewController
 	{
+		[Action ("addGroup:")]
+		partial void addGroup (UIKit.UIBarButtonItem sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

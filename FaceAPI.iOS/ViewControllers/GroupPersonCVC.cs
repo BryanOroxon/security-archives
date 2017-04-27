@@ -3,7 +3,7 @@
 using System;
 using UIKit;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
 	public partial class GroupPersonCVC : UICollectionViewCell
 	{

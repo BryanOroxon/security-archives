@@ -1,4 +1,4 @@
-﻿namespace FaceAPI.Models
+﻿namespace FaceAPI.iOS.Models
 {
 	public abstract class FaceModel
 	{

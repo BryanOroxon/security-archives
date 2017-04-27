@@ -1,5 +1,4 @@
-﻿using System;
-namespace Archives
+﻿namespace Archives
 {
 	public static class Constants
 	{

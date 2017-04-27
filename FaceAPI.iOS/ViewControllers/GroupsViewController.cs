@@ -4,18 +4,16 @@ using System;
 using System.Collections.Generic;
 using Foundation;
 using UIKit;
-using Archives.Utils;
-using FaceAPI.Models;
+using FaceAPI.iOS.Utils;
+using FaceAPI.iOS.Models;
 using FaceAPI.iOS.Client.V1;
 using FaceAPI.iOS.Utils;
 using System.Threading.Tasks;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
 	public partial class GroupsViewController : UITableViewController
 	{
-		const string DetailSegueId = "GroupDetail";
-
 		List<PersonGroupModel> Groups;
 
 		public GroupsViewController(IntPtr handle) : base(handle) { }
@@ -32,12 +30,19 @@ namespace Archives.ViewControllers
 			loadGroups();
 		}
 
-		async void loadGroups()
+		private void loadGroups()
 		{
 			try
 			{
-				Groups = await PersonGroupClient.Shared.GetPersonGroups();
-				TableView.ReloadData();
+				Task.Run(async () =>
+				{
+					Groups = await PersonGroupClient.Shared.GetPersonGroups();
+
+					BeginInvokeOnMainThread(() =>
+					{
+						TableView.ReloadData();
+					});
+				});
 			}
 			catch (Exception ex)
 			{
@@ -62,18 +67,16 @@ namespace Archives.ViewControllers
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			PerformSegue(DetailSegueId, this);
+			PersonGroupModel pg = Groups[indexPath.Row];
+			GroupDetailViewController uiview = Storyboard.InstantiateViewController("GroupDetailViewController") as GroupDetailViewController;
+			uiview.Group = pg;
+			NavigationController.PushViewController(uiview, true);
 		}
 
-		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		partial void addGroup(UIBarButtonItem sender)
 		{
-			base.PrepareForSegue(segue, sender);
-
-			if (segue.Identifier == DetailSegueId && TableView.IndexPathForSelectedRow != null)
-			{
-				var group = Groups[TableView.IndexPathForSelectedRow.Row];
-				(segue.DestinationViewController as GroupDetailViewController).Group = group;
-			}
+			UIViewController uiview = Storyboard.InstantiateViewController("GroupDetailViewController");
+			NavigationController.PushViewController(uiview, true);
 		}
 
 		public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, Foundation.NSIndexPath indexPath)
@@ -82,6 +85,7 @@ namespace Archives.ViewControllers
 			{
 				case UITableViewCellEditingStyle.Delete:
 
+					this.ShowHUD("Deleting Group");
 					Task.Run(async () =>
 					{
 						PersonGroupModel pg = Groups[indexPath.Row];
@@ -92,6 +96,7 @@ namespace Archives.ViewControllers
 							Groups.RemoveAt(indexPath.Row);
 							// delete the row from the table
 							tableView.DeleteRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+							this.ShowSimpleHUD("Group deleted");
 						});
 					});
 

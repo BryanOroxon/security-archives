@@ -7,10 +7,10 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
-	[Register ("GroupsViewController")]
-	partial class GroupsViewController
+	[Register ("PeopleViewController")]
+	partial class PeopleViewController
 	{
 		
 		void ReleaseDesignerOutlets ()

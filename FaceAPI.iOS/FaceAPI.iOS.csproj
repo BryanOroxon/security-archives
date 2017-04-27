@@ -51,6 +51,9 @@
     <Reference Include="Xamarin.Cognitive.Face">
       <HintPath>..\packages\Xamarin.Cognitive.Face.0.2.3-preview\lib\xamarinios10\Xamarin.Cognitive.Face.dll</HintPath>
     </Reference>
+    <Reference Include="MBProgressHUD">
+      <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -59,6 +62,8 @@
     <Folder Include="Client\V1\" />
     <Folder Include="Extensions\" />
     <Folder Include="Utils\" />
+    <Folder Include="ViewControllers\" />
+    <Folder Include="Constants\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,9 +83,37 @@
     <Compile Include="Interfaces\V1\IFaceList.cs" />
     <Compile Include="Client\V1\FaceClient.cs" />
     <Compile Include="Client\V1\ConfigClient.cs" />
+    <Compile Include="ViewControllers\GroupDetailViewController.cs" />
+    <Compile Include="ViewControllers\GroupDetailViewController.designer.cs">
+      <DependentUpon>GroupDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\GroupPersonCollectionViewController.cs" />
+    <Compile Include="ViewControllers\GroupPersonCollectionViewController.designer.cs">
+      <DependentUpon>GroupPersonCollectionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\GroupPersonCVC.cs" />
+    <Compile Include="ViewControllers\GroupPersonCVC.designer.cs">
+      <DependentUpon>GroupPersonCVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\GroupsViewController.cs" />
+    <Compile Include="ViewControllers\GroupsViewController.designer.cs">
+      <DependentUpon>GroupsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\PeopleViewController.cs" />
+    <Compile Include="ViewControllers\PeopleViewController.designer.cs">
+      <DependentUpon>PeopleViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\PersonDetailViewController.cs" />
+    <Compile Include="ViewControllers\PersonDetailViewController.designer.cs">
+      <DependentUpon>PersonDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Constants\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Face.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -3,9 +3,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using Xamarin.Cognitive.Face.iOS;
-using FaceAPI.Models;
+using FaceAPI.iOS.Models;
 
-namespace FaceAPI.Extensions
+namespace FaceAPI.iOS.Extensions
 {
 	public static class FaceExtensions
 	{

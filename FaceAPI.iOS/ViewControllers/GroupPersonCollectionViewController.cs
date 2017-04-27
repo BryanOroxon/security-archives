@@ -4,13 +4,12 @@ using System;
 using System.Threading.Tasks;
 using Foundation;
 using UIKit;
-using Archives.Utils;
-using Archives.Extensions;
-using FaceAPI.Models;
-using FaceAPI.iOS.Client.V1;
 using FaceAPI.iOS.Utils;
+using FaceAPI.iOS.Extensions;
+using FaceAPI.iOS.Models;
+using FaceAPI.iOS.Client.V1;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
 	public partial class GroupPersonCollectionViewController : UICollectionViewController
 	{

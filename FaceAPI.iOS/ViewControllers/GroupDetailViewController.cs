@@ -4,18 +4,15 @@ using System;
 using System.Threading.Tasks;
 using Foundation;
 using UIKit;
-using Archives.Utils;
-using Archives.Extensions;
-using FaceAPI.Models;
+using FaceAPI.iOS.Utils;
+using FaceAPI.iOS.Extensions;
+using FaceAPI.iOS.Models;
 using FaceAPI.iOS.Client.V1;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
 	public partial class GroupDetailViewController : UIViewController
 	{
-		const string EmbedSegueId = "Embed";
-		const string AddPersonSegueId = "AddPerson";
-
 		public PersonGroupModel Group { get; set; }
 		public bool NeedsTraining { get; set; }
 
@@ -30,24 +27,24 @@ namespace Archives.ViewControllers
 			groupName.BecomeFirstResponder();
 		}
 
-		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-		{
-			base.PrepareForSegue(segue, sender);
+		//public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		//{
+		//	base.PrepareForSegue(segue, sender);
 
-			if (segue.Identifier == EmbedSegueId && Group != null)
-			{
-				var groupPeopleCVC = segue.DestinationViewController as GroupPersonCollectionViewController;
+		//	if (segue.Identifier == EmbedSegueId && Group != null)
+		//	{
+		//		var groupPeopleCVC = segue.DestinationViewController as GroupPersonCollectionViewController;
 
-				groupPeopleCVC.Group = Group;
-			}
-			else if (segue.Identifier == AddPersonSegueId)
-			{
-				//var groupPersonVC = segue.DestinationViewController as PersonDetailViewController;
+		//		groupPeopleCVC.Group = Group;
+		//	}
+		//	else if (segue.Identifier == AddPersonSegueId)
+		//	{
+		//		//var groupPersonVC = segue.DestinationViewController as PersonDetailViewController;
 
-				//groupPersonVC.Group = Group;
-				//groupPersonVC.NeedsTraining = this.NeedsTraining;
-			}
-		}
+		//		//groupPersonVC.Group = Group;
+		//		//groupPersonVC.NeedsTraining = this.NeedsTraining;
+		//	}
+		//}
 
 		public override void ViewWillAppear(bool animated)
 		{
@@ -102,9 +99,10 @@ namespace Archives.ViewControllers
 				await createNewGroup();
 			}
 
-			if (Group != null) //just to make sure we succeeded in the case we created a new group above
+			if (Group != null)
 			{
-				PerformSegue(AddPersonSegueId, this);
+				UIViewController uiview = Storyboard.InstantiateViewController("PersonDetailViewController");
+				NavigationController.PushViewController(uiview, true);
 			}
 		}
 

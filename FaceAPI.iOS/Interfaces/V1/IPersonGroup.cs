@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FaceAPI.Models;
+using FaceAPI.iOS.Models;
 
 namespace FaceAPI.iOS.Interfaces.V1
 {

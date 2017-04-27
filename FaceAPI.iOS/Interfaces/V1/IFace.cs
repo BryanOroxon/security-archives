@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using FaceAPI.Models;
+using FaceAPI.iOS.Models;
 using UIKit;
 
 namespace FaceAPI.iOS.Interfaces.V1

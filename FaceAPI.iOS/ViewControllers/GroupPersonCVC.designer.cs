@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace Archives.ViewControllers
+namespace FaceAPI.iOS.ViewControllers
 {
 	[Register ("GroupPersonCVC")]
 	partial class GroupPersonCVC

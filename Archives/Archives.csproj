@@ -177,32 +177,8 @@
     <Compile Include="ViewControllers\MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\SetFaceRecViewController.cs" />
-    <Compile Include="ViewControllers\SetFaceRecViewController.designer.cs">
-      <DependentUpon>SetFaceRecViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\PeopleViewController.cs" />
-    <Compile Include="ViewControllers\CognitiveSettingsViewController.designer.cs">
-      <DependentUpon>PeopleViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\GroupsViewController.cs" />
-    <Compile Include="ViewControllers\GroupsViewController.designer.cs">
-      <DependentUpon>GroupsViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Utils\CommonUtil.cs" />
-    <Compile Include="ViewControllers\GroupDetailViewController.cs" />
-    <Compile Include="ViewControllers\GroupDetailViewController.designer.cs">
-      <DependentUpon>GroupDetailViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\GroupPersonCollectionViewController.cs" />
-    <Compile Include="ViewControllers\GroupPersonCollectionViewController.designer.cs">
-      <DependentUpon>GroupPersonCollectionViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\GroupPersonCVC.cs" />
-    <Compile Include="ViewControllers\GroupPersonCVC.designer.cs">
-      <DependentUpon>GroupPersonCVC.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FaceAPI.iOS\FaceAPI.iOS.csproj">
