@@ -93,6 +93,15 @@
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
+    <Reference Include="Cognitive.Face.iOS">
+      <HintPath>..\packages\Xamarin.Cognitive.Face.0.2.3-preview\lib\xamarinios10\Cognitive.Face.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Cognitive.Face">
+      <HintPath>..\packages\Xamarin.Cognitive.Face.0.2.3-preview\lib\xamarinios10\Xamarin.Cognitive.Face.dll</HintPath>
+    </Reference>
+    <Reference Include="MBProgressHUD">
+      <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -109,6 +118,7 @@
     <Folder Include="Storage\" />
     <Folder Include="Constants\" />
     <Folder Include="TableViewCells\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -167,6 +177,38 @@
     <Compile Include="ViewControllers\MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\SetFaceRecViewController.cs" />
+    <Compile Include="ViewControllers\SetFaceRecViewController.designer.cs">
+      <DependentUpon>SetFaceRecViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\PeopleViewController.cs" />
+    <Compile Include="ViewControllers\CognitiveSettingsViewController.designer.cs">
+      <DependentUpon>PeopleViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\GroupsViewController.cs" />
+    <Compile Include="ViewControllers\GroupsViewController.designer.cs">
+      <DependentUpon>GroupsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\TaskExtensions.cs" />
+    <Compile Include="Utils\CommonUtil.cs" />
+    <Compile Include="ViewControllers\GroupDetailViewController.cs" />
+    <Compile Include="ViewControllers\GroupDetailViewController.designer.cs">
+      <DependentUpon>GroupDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\GroupPersonCollectionViewController.cs" />
+    <Compile Include="ViewControllers\GroupPersonCollectionViewController.designer.cs">
+      <DependentUpon>GroupPersonCollectionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\GroupPersonCVC.cs" />
+    <Compile Include="ViewControllers\GroupPersonCVC.designer.cs">
+      <DependentUpon>GroupPersonCVC.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FaceAPI.iOS\FaceAPI.iOS.csproj">
+      <Project>{C064BB84-9ED5-4D0B-977A-65F2CADEC8F5}</Project>
+      <Name>FaceAPI.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

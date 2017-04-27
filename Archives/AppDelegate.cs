@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Text;
+using FaceAPI.iOS;
 using Foundation;
 using LocalAuthentication;
 using Security;
@@ -26,6 +27,8 @@ namespace Archives
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+
+			ConfigClient.SuscriptionKey = "dd1bb5963dcd4d269e9cb296dde2dac5";
 
 			// Code to start the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD

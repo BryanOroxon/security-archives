@@ -1,0 +1,8 @@
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/obj/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/obj/Debug/optimized/
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/bin/Debug/Cognitive.Face.iOS.dll
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/bin/Debug/Xamarin.Cognitive.Face.dll
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/bin/Debug/FaceAPI.iOS.pdb
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/bin/Debug/FaceAPI.iOS.dll
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/obj/Debug/FaceAPI.iOS.dll
+/Users/rcervantes/Github/security-archives/FaceAPI.iOS/obj/Debug/FaceAPI.iOS.pdb

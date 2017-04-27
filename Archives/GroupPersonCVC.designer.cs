@@ -9,20 +9,26 @@ using System.CodeDom.Compiler;
 
 namespace Archives
 {
-	[Register ("SetPasscodeViewController")]
-	partial class SetPasscodeViewController
+	[Register ("GroupPersonCVC")]
+	partial class GroupPersonCVC
 	{
 		[Outlet]
-		UIKit.UITextField[] digits { get; set; }
+		UIKit.UIImageView imageView { get; set; }
 
-		[Action ("digitEditingChanged:")]
-		partial void digitEditingChanged (Foundation.NSObject sender);
-
-		[Action ("next:")]
-		partial void next (Foundation.NSObject sender);
+		[Outlet]
+		UIKit.UILabel label { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (imageView != null) {
+				imageView.Dispose ();
+				imageView = null;
+			}
+
+			if (label != null) {
+				label.Dispose ();
+				label = null;
+			}
 		}
 	}
 }

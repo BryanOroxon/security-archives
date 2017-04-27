@@ -14,6 +14,7 @@ namespace Archives.ViewControllers
 	{
 		private bool _isPasscodeEnabled = false;
 		private bool _isTouchIDEnabled = false;
+        private bool _isFaceRecognitionEnabled = false;
 		private List<string> Items { get; set; } = new List<string>();
 		public bool IsCommingFromSetPasscode = false;
 
@@ -24,6 +25,7 @@ namespace Archives.ViewControllers
 			base.LoadView();
 			_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
 			_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
+            _isFaceRecognitionEnabled = Settings.BoolForKey(Constants.__SECURITY_ISFACERECOGNITIONENABLED__);
 
 			if (_isPasscodeEnabled)
 			{
@@ -39,6 +41,7 @@ namespace Archives.ViewControllers
 			this.Title = Constants.__TITLE_SECURITY__;
 			Items.Add("Passcode");
 			Items.Add("Touch ID");
+			Items.Add("Face Recognition");
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -89,7 +92,12 @@ namespace Archives.ViewControllers
 				((UISwitch)cell.AccessoryView).Enabled = ((_isPasscodeEnabled) || (_isTouchIDEnabled)) ? true : false;
 			}
 
-			return cell;
+            if (indexPath.Row == 2)
+            {
+				((UISwitch)cell.AccessoryView).On = _isPasscodeEnabled;
+            }
+
+            return cell;
 		}
 
 		partial void switchCellValueChanged(UISwitch sender)
@@ -125,6 +133,12 @@ namespace Archives.ViewControllers
 
 					UpdateSettings();
 				}
+			}
+			else if ((int)uiswitch.Tag == 2)
+			{
+				//go and set a new face recognition configuration
+				UIViewController uiview = Storyboard.InstantiateViewController("PeopleViewController");
+				NavigationController.PushViewController(uiview, true);
 			}
 			else
 				UpdateSettings();
