@@ -14,7 +14,7 @@ namespace Archives.ViewControllers
 	{
 		private bool _isPasscodeEnabled = false;
 		private bool _isTouchIDEnabled = false;
-        private bool _isFaceRecognitionEnabled = false;
+		private bool _isFaceRecognitionEnabled = false;
 		private List<string> Items { get; set; } = new List<string>();
 		public bool IsCommingFromSetPasscode = false;
 
@@ -25,7 +25,7 @@ namespace Archives.ViewControllers
 			base.LoadView();
 			_isPasscodeEnabled = Settings.BoolForKey(Constants.__SECURITY_ISPASSCODEENABLED__);
 			_isTouchIDEnabled = Settings.BoolForKey(Constants.__SECURITY_ISTOUCHIDENABLED__);
-            _isFaceRecognitionEnabled = Settings.BoolForKey(Constants.__SECURITY_ISFACERECOGNITIONENABLED__);
+			_isFaceRecognitionEnabled = Settings.BoolForKey(Constants.__SECURITY_ISFACERECOGNITIONENABLED__);
 
 			if (_isPasscodeEnabled)
 			{
@@ -67,6 +67,13 @@ namespace Archives.ViewControllers
 					((UISwitch)touchid_cell.AccessoryView).Enabled = false;
 				}
 			}
+
+			_isFaceRecognitionEnabled = Settings.BoolForKey(Constants.__SECURITY_ISFACERECOGNITIONENABLED__);
+
+			//get face recognition switch value
+			NSIndexPath face_idx = NSIndexPath.FromRowSection(2, 0);
+			UITableViewCell face_cell = TableView.CellAt(face_idx);
+			((UISwitch)face_cell.AccessoryView).On = _isFaceRecognitionEnabled;
 		}
 
 		public override nint NumberOfSections(UITableView tableView) => 1;
@@ -92,12 +99,12 @@ namespace Archives.ViewControllers
 				((UISwitch)cell.AccessoryView).Enabled = ((_isPasscodeEnabled) || (_isTouchIDEnabled)) ? true : false;
 			}
 
-            if (indexPath.Row == 2)
-            {
+			if (indexPath.Row == 2)
+			{
 				((UISwitch)cell.AccessoryView).On = _isPasscodeEnabled;
-            }
+			}
 
-            return cell;
+			return cell;
 		}
 
 		partial void switchCellValueChanged(UISwitch sender)

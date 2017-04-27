@@ -7,3 +7,6 @@ Archives.UITests/obj/
 
 packages/
 Archives.userprefs
+
+FaceAPI.iOS/bin/
+FaceAPI.iOS/obj/
