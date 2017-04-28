@@ -9,15 +9,10 @@ namespace Archives.ViewControllers
 	{
 		public ArchivesViewController(IntPtr handle) : base(handle) { }
 
-		public override void LoadView()
-		{
-			base.LoadView();
-		}
-
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			NavigationItem.Title = Constants.__TITLE_ARCHIVES__;
+			this.Title = Constants.__TITLE_ARCHIVES__;
 		}
 	}
 }

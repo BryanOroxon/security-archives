@@ -19,7 +19,7 @@ namespace Archives.ViewControllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			NavigationItem.Title = Constants.__TITLE_SETTINGS__;
+			this.Title = Constants.__TITLE_SETTINGS__;
 			Items.Add("Security");
 			Items.Add("About");
 		}

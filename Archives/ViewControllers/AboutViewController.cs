@@ -7,10 +7,12 @@ namespace Archives.ViewControllers
 {
 	public partial class AboutViewController : UIViewController
 	{
-		public AboutViewController (IntPtr handle) : base (handle) { }
+		public AboutViewController(IntPtr handle) : base(handle) { }
 
 		public override void ViewDidLoad()
 		{
+			base.ViewDidLoad();
+			this.Title = Constants.__TITLE_ABOUT__;
 			Foundation.NSUrl url = new Foundation.NSUrl("http://rcervantes.me/");
 			webView.LoadRequest(new Foundation.NSUrlRequest(url));
 			webView.ScalesPageToFit = true;
