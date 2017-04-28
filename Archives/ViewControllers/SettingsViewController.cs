@@ -12,7 +12,6 @@ namespace Archives.ViewControllers
 {
 	public partial class SettingsViewController : UITableViewController
 	{
-		private bool _isPasscodeEnabled = false;
 		private List<string> Items { get; set; } = new List<string>();
 
 		public SettingsViewController(IntPtr handle) : base(handle) { }
